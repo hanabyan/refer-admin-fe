@@ -7,9 +7,37 @@
           <q-icon name="menu" />
         </q-btn>
 
-        <q-toolbar-title>Quasar App</q-toolbar-title>
+        <q-toolbar-title>Refer Admin Dashboard</q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <q-btn-dropdown
+          flat
+          split
+          push
+          no-caps
+          color="white"
+        >
+          <template v-slot:label>
+            <q-item-section>
+              <q-item-label>{{ profile && profile.name }}</q-item-label>
+              <q-item-label caption class="text-white">{{ profile.email }}</q-item-label>
+            </q-item-section>
+          </template>
+
+          <div class="row no-wrap q-pa-md">
+            <div class="col items-center">
+              <q-btn
+                flat
+                class="full-width"
+                color="primary"
+                label="Logout"
+                push
+                size="sm"
+                v-close-popup
+                @click="logout"
+              />
+            </div>
+          </div>
+        </q-btn-dropdown>
       </q-toolbar>
     </q-header>
 
@@ -35,7 +63,12 @@
 </template>
 
 <script>
+/*
+TODO: check lagi ketika logout ga nemu profile.name langsung
+error di componentnya (lihat console log)
+*/
 import { openURL } from 'quasar';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'Default',
@@ -59,6 +92,16 @@ export default {
           pathTo: '/product',
         },
         {
+          label: 'Categories',
+          icon: 'category',
+          pathTo: '/categories',
+        },
+        {
+          label: 'Promo',
+          icon: 'local_offer',
+          pathTo: '/promo',
+        },
+        {
           label: 'Voucher',
           icon: 'confirmation_number',
           pathTo: '/voucher',
@@ -68,6 +111,12 @@ export default {
   },
   methods: {
     openURL,
+    ...mapActions('authentication', ['logout']),
+  },
+  computed: {
+    profile() {
+      return this.$store.state.authentication.user;
+    },
   },
 };
 </script>

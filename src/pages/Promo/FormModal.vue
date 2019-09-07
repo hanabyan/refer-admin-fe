@@ -1,10 +1,12 @@
 <template>
-  <q-page padding>Clients</q-page>
+  <q-page padding>
+    <!-- content -->
+  </q-page>
 </template>
 
 <script>
 export default {
-  name: 'PageClients',
+  // name: 'PageName',
 };
 </script>
 

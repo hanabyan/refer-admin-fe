@@ -11,6 +11,7 @@ module.exports = function (ctx) {
     boot: [
       'i18n',
       'axios',
+      'vuelidate',
     ],
 
     css: [
@@ -49,10 +50,29 @@ module.exports = function (ctx) {
         'QItem',
         'QItemSection',
         'QItemLabel',
+        'QTable',
+        'QTh',
+        'QTr',
+        'QTd',
+        'QDialog',
+        'QCard',
+        'QCardSection',
+        'QCardActions',
+        'QSpace',
+        'QInput',
+        'QSelect',
+        'QFooter',
+        'QSeparator',
+        'QForm',
+        'QBtnDropdown',
+        'QAvatar',
+        'QImg',
+        'QField',
       ],
 
       directives: [
         'Ripple',
+        'ClosePopup',
       ],
 
       // Quasar plugins
@@ -85,8 +105,17 @@ module.exports = function (ctx) {
 
     devServer: {
       // https: true,
-      // port: 8080,
+      port: 8081,
       open: true, // opens browser window automatically
+      proxy: {
+        '/api': {
+          target: 'http://localhost:3080/netwerk/refer',
+          changeOrigin: true,
+          // pathRewrite: {
+          //   '^/api': '',
+          // },
+        },
+      },
     },
 
     // animations: 'all', // --- includes all animations
