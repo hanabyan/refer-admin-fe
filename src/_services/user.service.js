@@ -22,7 +22,21 @@ function login(email, password) {
     });
 }
 
+function create(payload) {
+  return axios.post('/user', payload)
+    .then(res => res.data)
+    .catch(err => Promise.reject(err));
+}
+
+function update(payload, id) {
+  return axios.put(`/user/${id}`, payload)
+    .then(res => res.data)
+    .catch(err => Promise.reject(err));
+}
+
 export const userService = {
   login,
   logout,
+  create,
+  update,
 };
