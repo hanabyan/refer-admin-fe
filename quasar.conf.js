@@ -68,6 +68,9 @@ module.exports = function (ctx) {
         'QAvatar',
         'QImg',
         'QField',
+        'QDate',
+        'QPopupProxy',
+        'QRadio',
       ],
 
       directives: [

@@ -17,6 +17,7 @@
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
     "jwt-decode": "^2.2.0",
+    "moment": "^2.24.0",
     "quasar": "^1.0.0",
     "vue-i18n": "^8.0.0",
     "vue-image-crop-upload": "^2.5.0",
