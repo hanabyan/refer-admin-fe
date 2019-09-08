@@ -12,7 +12,19 @@
           row-key="id"
           selection="multiple"
           :selected.sync="selected"
-        ></q-table>
+        >
+          <template v-slot:body-cell-image="props">
+            {{ $log(props) }}
+            <q-td
+              :key="props.col.name"
+            >
+              <q-img
+                style="width: 50px; height: 50px; background-color: rgba(0, 0, 0, 0.2)"
+                :src="props.row.image"
+              />
+            </q-td>
+          </template>
+        </q-table>
       </q-card-section>
       <q-card-actions
         align="right"
@@ -49,6 +61,13 @@ export default {
       isSubmitting: false,
       selected: [],
       columns: [
+        {
+          name: 'image',
+          label: 'Image',
+          field: 'image',
+          sortable: true,
+          align: 'left',
+        },
         {
           name: 'name',
           label: 'Name',

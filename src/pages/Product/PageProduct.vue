@@ -19,16 +19,55 @@
       <template v-slot:body="props">
         <q-tr
           :props="props"
-          @click.native="onRowClick(props.row)"
           class="cursor-pointer"
         >
           <q-td
+            :key="props.cols[0].name"
+            :props="props"
+            @click.native="onRowClick(props.row)"
+          >
+            <q-img
+              style="width: 50px; height: 50px; background-color: rgba(0, 0, 0, 0.2)"
+              :src="props.cols[0].value"
+            />
+          </q-td>
+          <q-td
+            :key="props.cols[1].name"
+            :props="props"
+            @click.native="onRowClick(props.row)"
+          >{{ props.cols[1].value }}</q-td>
+          <q-td
+            :key="props.cols[2].name"
+            :props="props"
+            @click.native="onRowClick(props.row)"
+          >{{ props.cols[2].value }}</q-td>
+          <q-td
+            :key="props.cols[3].name"
+            :props="props"
+            @click.native="onRowClick(props.row)"
+          >{{ props.cols[3].value }}</q-td>
+          <q-td
+            :key="props.cols[4].name"
+            :props="props"
+            @click.native="onRowClick(props.row)"
+          >{{ props.cols[4].value }}</q-td>
+          <q-td
+            :key="props.cols[5].name"
+            :props="props"
+            @click.native="onRowClick(props.row)"
+          >{{ props.cols[5].value }}</q-td>
+          <q-td
+            :key="props.cols[6].name"
+            :props="props"
+            @click.native="onRowClick(props.row)"
+          >{{ props.cols[6].value }}</q-td>
+          <!-- <q-td
             v-for="col in props.cols"
             :key="col.name"
             :props="props"
           >
             {{ col.value }}
-          </q-td>
+          </q-td> -->
         </q-tr>
       </template>
 
@@ -66,6 +105,13 @@ export default {
     // TODO: image
     return {
       columns: [
+        {
+          name: 'image',
+          label: 'Image',
+          field: 'image',
+          sortable: true,
+          align: 'left',
+        },
         {
           name: 'name',
           label: 'Product Name',

@@ -176,6 +176,7 @@ export default {
   },
   beforeMount() {
     this.form = { ...this.formDataObj };
+    this.imgDataUrl = this.formDataObj.image;
   },
   props: ['isShowForm', 'actionType', 'formDataObj'],
   data() {

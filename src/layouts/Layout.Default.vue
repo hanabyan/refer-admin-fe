@@ -45,7 +45,13 @@
       <q-list>
         <q-item-label header>Navigation</q-item-label>
 
-        <q-item v-for="nav in navs" :key="nav.label" :to="nav.pathTo" exact clickable>
+        <q-item
+          v-for="nav in navs"
+          :key="nav.label"
+          :to="nav.pathTo"
+          exact
+          :clickable="!!nav.pathTo"
+        >
           <q-item-section avatar>
             <q-icon :name="nav.icon" />
           </q-item-section>
@@ -99,7 +105,22 @@ export default {
         {
           label: 'Promo',
           icon: 'local_offer',
+          pathTo: '',
+        },
+        {
+          label: 'Setup',
+          icon: '',
           pathTo: '/promo',
+        },
+        {
+          label: 'Claim',
+          icon: '',
+          pathTo: '/promo/claim',
+        },
+        {
+          label: 'Users',
+          icon: 'person_pin',
+          pathTo: '/users',
         },
         {
           label: 'Voucher',
