@@ -188,6 +188,7 @@ export default {
       }
     },
     refetch() {
+      this.fetchPromo();
     },
     addNew() {
       this.isShowForm = true;
@@ -216,7 +217,10 @@ export default {
     },
     showSettingProduct(id) {
       console.log(id);
-      this.isOpenSetProduct = true;
+      console.log(this.$router.currentRoute);
+      this.$router.push(`${this.$router.currentRoute.path}/${id}/product`);
+      // TODO: check apa perlu remove modal
+      // this.isOpenSetProduct = true;
     },
     toggleSetProduct() {
       this.isOpenSetProduct = !this.isOpenSetProduct;

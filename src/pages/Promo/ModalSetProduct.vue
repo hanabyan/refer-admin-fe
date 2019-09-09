@@ -8,13 +8,13 @@
         <q-table
           :data="products"
           :columns="columns"
-          title="Set Promo Product"
+          title="Pick Promo Product"
           row-key="id"
           selection="multiple"
           :selected.sync="selected"
+          binary-state-sort
         >
           <template v-slot:body-cell-image="props">
-            {{ $log(props) }}
             <q-td
               :key="props.col.name"
             >
@@ -53,9 +53,10 @@ import { mapActions } from 'vuex';
 export default {
   name: 'ModalSetProduct',
   beforeMount() {
-    this.getProduct();
+    const productIds = this.promoProducts.map(item => item.id);
+    this.getProduct(productIds.join());
   },
-  props: ['isOpen', 'toggle'],
+  props: ['isOpen', 'toggle', 'onSelected', 'promoProducts'],
   data() {
     return {
       isSubmitting: false,
@@ -68,6 +69,13 @@ export default {
           sortable: true,
           align: 'left',
         },
+        // {
+        //   name: 'total',
+        //   label: 'Total Item',
+        //   field: '',
+        //   sortable: true,
+        //   align: 'left',
+        // },
         {
           name: 'name',
           label: 'Name',
@@ -115,8 +123,7 @@ export default {
       this.toggleModal();
     },
     handleSubmit() {
-      console.log(this.selected);
-      this.toggleModal();
+      this.$emit('onSelected', this.selected);
     },
   },
   computed: {

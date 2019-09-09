@@ -127,8 +127,8 @@
               <q-field label="Availability" stack-label>
                 <template v-slot:control>
                   <div class="q-gutter-sm">
-                    <q-radio v-model="form.promo_type" val="0" label="Limited" />
-                    <q-radio v-model="form.promo_type" val="1" label="Unlimited" />
+                    <q-radio v-model="form.unlimited" val="0" label="Limited" />
+                    <q-radio v-model="form.unlimited" val="1" label="Unlimited" />
                   </div>
                 </template>
               </q-field>
@@ -190,7 +190,7 @@
 import { required } from 'vuelidate/lib/validators';
 // import myUpload from 'vue-image-crop-upload';
 // import token from '../../_helper/token.helper';
-// import { productService } from '../../_services';
+import { promoService } from '../../_services';
 
 export default {
   // name: 'ComponentName',
@@ -229,7 +229,6 @@ export default {
       return date >= this.form.period_start;
     },
     async handleSubmit() {
-      /*
       this.isSubmitting = true;
       this.isSubmitted = true;
       this.$v.$touch();
@@ -240,23 +239,27 @@ export default {
       }
 
       const {
-        name, description, image, client_id: client,
-        estimated_price: estimatedPrice, sku, category_id: category,
+        name, description, promo_type: promoType, promo_value: promoValue,
+        period_start: periodStart, period_end: periodEnd,
+        unlimited, referral_commission: referralCommission,
+        referral_share_count: referralShareCount,
       } = this.form;
 
       const payload = {
         name,
         description,
-        image: this.imgDataUrl || image,
-        client_id: typeof client === 'object' ? client.value : client,
-        estimated_price: estimatedPrice,
-        sku,
-        category_id: typeof category === 'object' ? category.value : category,
+        promo_type: promoType,
+        promo_value: promoValue,
+        period_start: periodStart,
+        period_end: periodEnd,
+        unlimited,
+        referral_commission: referralCommission,
+        referral_share_count: referralShareCount,
       };
 
       if (this.actionType === 'create') {
         try {
-          const created = await productService.create(payload);
+          const created = await promoService.create(payload);
           if (created) {
             this.$emit('refetch');
             this.toggleModal();
@@ -280,7 +283,7 @@ export default {
         }
       } else if (this.actionType === 'edit') {
         try {
-          const updated = await productService.update(payload, this.form.id);
+          const updated = await promoService.update(payload, this.form.id);
           if (updated) {
             this.$emit('refetch');
             this.toggleModal();
@@ -302,7 +305,7 @@ export default {
             this.$q.notify({ color: 'negative', message: errMsg, position: 'top-right' });
           }
         }
-      } */
+      }
     },
   },
   // computed: {

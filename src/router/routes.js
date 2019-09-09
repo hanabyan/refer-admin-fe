@@ -12,8 +12,11 @@ const routes = [
         component: () => import('layouts/Layout.Promo.vue'),
         children: [
           { path: '', component: () => import('pages/Promo/PagePromo.vue') },
+          { path: ':id?/product', component: () => import('pages/Promo/PagePromoProduct.vue') },
         ],
       },
+      { path: 'claim-reward', component: () => import('pages/Promo/PagePromoClaim') },
+      { path: 'users', component: () => import('pages/User/PageUsers.vue') },
       { path: 'voucher', component: () => import('pages/PageVoucher.vue') },
     ],
   },

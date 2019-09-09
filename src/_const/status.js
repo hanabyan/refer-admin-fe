@@ -31,5 +31,6 @@ function getUserStep(ids = [0, 1]) {
 export const STATUS = {
   raw,
   get,
+  rawUserStep,
   getUserStep,
 };

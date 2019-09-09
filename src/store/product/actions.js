@@ -1,7 +1,7 @@
 import { productService } from '../../_services';
 
-export function getProduct({ commit }) {
-  productService.get()
+export function getProduct({ commit }, id) {
+  productService.get(id)
     .then((product) => {
       commit('productSuccess', product);
     })

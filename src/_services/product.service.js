@@ -1,13 +1,7 @@
 import axios from 'axios';
 
 function get(id) {
-  const payload = {};
-
-  if (id) {
-    Object.assign({}, payload, id);
-  }
-
-  return axios('/product', payload)
+  return axios('/product', { params: { id } })
     .then(res => res.data)
     .catch(err => Promise.reject(err));
 }
