@@ -122,8 +122,8 @@
           </div>
 
           <!-- right column -->
-          <!-- <div class="col col-md-6">
-            <div class="q-mb-md">
+          <div class="col col-md-6">
+            <!-- <div class="q-mb-md">
               <q-field label="Availability" stack-label>
                 <template v-slot:control>
                   <div class="q-gutter-sm">
