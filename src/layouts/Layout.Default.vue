@@ -1,7 +1,7 @@
 /* eslint-disable */
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header elevated style="background-color: #0100CA;">
       <q-toolbar>
         <q-btn flat dense round @click="leftDrawerOpen = !leftDrawerOpen" aria-label="Menu">
           <q-icon name="menu" />
@@ -43,7 +43,13 @@
 
     <q-drawer v-model="leftDrawerOpen" bordered content-class="bg-grey-2">
       <q-list>
-        <q-item-label header>Navigation</q-item-label>
+        <q-item-label header>
+          <img
+            alt="Refer logo"
+            src="~assets/img/logo.refer.medium.png"
+            style="max-height: 40px;"
+          >
+        </q-item-label>
 
         <q-item
           v-for="nav in navs"

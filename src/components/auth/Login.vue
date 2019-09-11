@@ -9,7 +9,14 @@
       bordered
     >
       <q-card-section>
-        <p class="text-h4">Sign In</p>
+        <div class="row">
+          <div class="col">
+            <img src="~/assets/img/logo.refer.medium.png" style="height: 35px"/>
+          </div>
+          <div class="col">
+            <p class="text-h4">Sign In</p>
+          </div>
+        </div>
       </q-card-section>
 
       <q-separator inset />
@@ -17,7 +24,7 @@
   @submit.prevent="handleSubmit"
 >
       <q-card-section>
-        <div class="q-mb-md">
+        <div class="q-mb-xs">
           <q-input
             v-model="$v.email.$model"
             label="Email"
