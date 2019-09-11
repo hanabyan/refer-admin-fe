@@ -122,7 +122,7 @@
           </div>
 
           <!-- right column -->
-          <div class="col col-md-6">
+          <!-- <div class="col col-md-6">
             <div class="q-mb-md">
               <q-field label="Availability" stack-label>
                 <template v-slot:control>
@@ -132,7 +132,7 @@
                   </div>
                 </template>
               </q-field>
-            </div>
+            </div> -->
 
             <div class="q-mb-md">
               <q-input
@@ -241,7 +241,7 @@ export default {
       const {
         name, description, promo_type: promoType, promo_value: promoValue,
         period_start: periodStart, period_end: periodEnd,
-        unlimited, referral_commission: referralCommission,
+        referral_commission: referralCommission,
         referral_share_count: referralShareCount,
       } = this.form;
 
@@ -252,7 +252,6 @@ export default {
         promo_value: promoValue,
         period_start: periodStart,
         period_end: periodEnd,
-        unlimited,
         referral_commission: referralCommission,
         referral_share_count: referralShareCount,
       };

@@ -113,7 +113,7 @@ module.exports = function (ctx) {
       port: 8081,
       open: true, // opens browser window automatically
       proxy: {
-        '/api': {
+        '/admin': {
           target: 'http://localhost:3080/netwerk/refer',
           changeOrigin: true,
           // pathRewrite: {

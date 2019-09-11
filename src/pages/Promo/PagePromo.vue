@@ -138,13 +138,13 @@ export default {
           sortable: true,
           align: 'left',
         },
-        {
-          name: 'unlimited',
-          label: 'Unlimited',
-          field: 'unlimited',
-          sortable: true,
-          align: 'left',
-        },
+        // {
+        //   name: 'unlimited',
+        //   label: 'Unlimited',
+        //   field: 'unlimited',
+        //   sortable: true,
+        //   align: 'left',
+        // },
         {
           name: 'id',
           label: '',
