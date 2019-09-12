@@ -84,6 +84,7 @@
 </template>
 
 <script>
+// TODO: check error duplicate id
 import moment from 'moment';
 // import { mapActions, mapGetters } from 'vuex';
 import FormModal from './FormModal.vue';
