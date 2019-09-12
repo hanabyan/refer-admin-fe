@@ -89,26 +89,26 @@ export default {
           align: 'left',
         },
         {
-          name: 'verified',
+          name: 'status_name',
           label: 'Status',
-          field: 'verified',
+          field: 'status_name',
           sortable: true,
           align: 'left',
         },
-        {
-          name: 'referrer_code',
-          label: 'Referrer Code',
-          field: 'referrer_code',
-          sortable: true,
-          align: 'left',
-        },
-        {
-          name: 'referrer_code_parent',
-          label: 'Parent Referrer Code',
-          field: 'referrer_code_parent',
-          sortable: true,
-          align: 'left',
-        },
+        // {
+        //   name: 'referrer_code',
+        //   label: 'Referrer Code',
+        //   field: 'referrer_code',
+        //   sortable: true,
+        //   align: 'left',
+        // },
+        // {
+        //   name: 'referrer_code_parent',
+        //   label: 'Parent Referrer Code',
+        //   field: 'referrer_code_parent',
+        //   sortable: true,
+        //   align: 'left',
+        // },
       ],
     };
   },
@@ -122,6 +122,7 @@ export default {
         phone: '',
         email: '',
         verified: STATUS.rawUserStep.find(item => parseInt(item.value, 10) === 0),
+        password: '',
       };
     },
     presetEdit(data) {
@@ -140,11 +141,17 @@ export default {
         email,
         verified: STATUS.rawUserStep.find(item => parseInt(item.value, 10)
           === parseInt(verified, 10)),
+        password: '',
       };
 
       this.formDataObj = payload;
     },
     refetch() {
+      userService.get().then((res) => {
+        this.users = res;
+      }, (rej) => {
+        console.log(rej);
+      });
     },
     addNew() {
       this.formActionType = 'create';

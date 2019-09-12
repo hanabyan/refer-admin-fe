@@ -30,33 +30,45 @@
 
             <div class="q-mb-md">
               <q-input
-                v-model="form.name"
+                v-model="$v.form.name.$model"
                 label="Name"
                 :dense="false"
                 lazy-rules
+                :error="isSubmitted && $v.form.name.$error"
               >
+                <template v-slot:error>
+                  <p v-if="!$v.form.name.required">Name is required</p>
+                </template>
               </q-input>
             </div>
 
             <div class="q-mb-md">
               <q-input
-                v-model="form.phone"
+                v-model="$v.form.phone.$model"
                 label="Phone"
                 :dense="false"
                 lazy-rules
                 type="phone"
+                :error="isSubmitted && $v.form.name.$error"
               >
+                <template v-slot:error>
+                  <p v-if="!$v.form.phone.required">Phone is required</p>
+                </template>
               </q-input>
             </div>
 
             <div class="q-mb-md">
               <q-input
-                v-model="form.email"
+                v-model="$v.form.email.$model"
                 label="Email"
                 :dense="false"
                 lazy-rules
                 type="email"
+                :error="isSubmitted && $v.form.email.$error"
               >
+                <template v-slot:error>
+                  <p v-if="!$v.form.email.required">Email is required</p>
+                </template>
               </q-input>
             </div>
 
@@ -68,6 +80,17 @@
                 :options="STATUS_OPTIONS"
                 label="Status"
               />
+            </div>
+
+            <div class="q-mb-md">
+              <q-input
+                v-model="form.password"
+                label="Password"
+                :dense="false"
+                lazy-rules
+                type="password"
+              >
+              </q-input>
             </div>
 
           </div>
@@ -146,12 +169,18 @@ export default {
       }
 
       const {
-        name, email, phone, verified,
+        name, email, phone, verified, password,
       } = this.form;
 
       const payload = {
-        name, email, phone, verified,
+        name, email, phone, verified: verified.value,
       };
+
+      if (password.trim().length > 0) {
+        Object.assign(payload, {
+          password,
+        });
+      }
 
       if (this.actionType === 'create') {
         try {
