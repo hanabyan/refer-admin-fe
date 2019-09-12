@@ -22,6 +22,12 @@ function login(email, password) {
     });
 }
 
+function get(payload) {
+  return axios('/user', payload)
+    .then(res => res.data)
+    .catch(err => Promise.reject(err));
+}
+
 function create(payload) {
   return axios.post('/user', payload)
     .then(res => res.data)
@@ -37,6 +43,7 @@ function update(payload, id) {
 export const userService = {
   login,
   logout,
+  get,
   create,
   update,
 };

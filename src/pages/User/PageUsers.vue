@@ -46,11 +46,19 @@
 <script>
 import FormModal from './FormModal';
 import { STATUS } from '../../_const';
+import { userService } from '../../_services';
 
 export default {
   name: 'PageUsers',
   components: {
     FormModal,
+  },
+  beforeMount() {
+    userService.get().then((res) => {
+      this.users = res;
+    }, (rej) => {
+      console.log(rej);
+    });
   },
   data() {
     return {
