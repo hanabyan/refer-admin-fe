@@ -69,12 +69,6 @@
       @toggle="toggleModal"
       @refetch="refetch"
     />
-
-    <ModalSetProduct
-      v-if="isOpenSetProduct"
-      :isOpen="isOpenSetProduct"
-      @toggle="toggleSetProduct"
-    />
   </div>
 </template>
 
@@ -82,14 +76,12 @@
 import moment from 'moment';
 // import { mapActions, mapGetters } from 'vuex';
 import FormModal from './FormModal.vue';
-import ModalSetProduct from './ModalSetProduct';
 import { promoService } from '../../_services';
 
 export default {
   name: 'PageProduct',
   components: {
     FormModal,
-    ModalSetProduct,
   },
   mounted() {
     this.fetchPromo();
@@ -151,7 +143,6 @@ export default {
       isShowForm: false,
       actionType: '',
       formDataObj: {},
-      isOpenSetProduct: false,
     };
   },
   methods: {
@@ -211,14 +202,7 @@ export default {
       this.formDataObj = payload;
     },
     showSettingProduct(id) {
-      console.log(id);
-      console.log(this.$router.currentRoute);
       this.$router.push(`${this.$router.currentRoute.path}/${id}/product`);
-      // TODO: check apa perlu remove modal
-      // this.isOpenSetProduct = true;
-    },
-    toggleSetProduct() {
-      this.isOpenSetProduct = !this.isOpenSetProduct;
     },
   },
   computed: {
