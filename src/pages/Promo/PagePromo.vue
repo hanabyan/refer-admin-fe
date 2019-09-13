@@ -46,11 +46,6 @@
             @click.native="onRowClick(props.row)"
           >{{ props.cols[4].value }}</q-td>
           <q-td
-            :key="props.cols[5].name"
-            :props="props"
-            @click.native="onRowClick(props.row)"
-          >{{ props.cols[5].value }}</q-td>
-          <q-td
             key="id"
             :props="props"
           >
@@ -58,7 +53,7 @@
               color="primary"
               label="Set Product"
               size="sm"
-              @click="showSettingProduct(props.cols[6].value)"
+              @click="showSettingProduct(props.cols[5].value)"
             />
           </q-td>
         </q-tr>
@@ -84,7 +79,6 @@
 </template>
 
 <script>
-// TODO: check error duplicate id
 import moment from 'moment';
 // import { mapActions, mapGetters } from 'vuex';
 import FormModal from './FormModal.vue';
