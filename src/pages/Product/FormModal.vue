@@ -186,7 +186,7 @@ export default {
       form: {},
       isShowCropper: false,
       uploadConfig: {
-        url: 'api/upload/product',
+        url: `${process.env.API_BASE}/upload/product`,
         field: 'image',
         headers: {
           'Authorization': token.get(),

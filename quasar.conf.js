@@ -91,6 +91,11 @@ module.exports = function (ctx) {
     build: {
       scopeHoisting: true,
       vueRouterMode: 'history',
+      publicPath: 'https://refer.co.id/admin',
+      env: {
+        AXIOS_BASE: ctx.dev ? JSON.stringify('/admin') : JSON.stringify('/api/admin'),
+        API_BASE: ctx.dev ? JSON.stringify('/admin') : JSON.stringify('https://refer.co.id/api/admin'),
+      },
       // vueCompiler: true,
       // gzip: true,
       // analyze: true,
