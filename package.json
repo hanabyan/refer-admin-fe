@@ -1,7 +1,7 @@
 {
   "name": "refer-admin-fe",
   "version": "0.0.1",
-  "description": "A Quasar Framework app",
+  "description": "Refer Admin Dashboard",
   "productName": "Refer Admin",
   "cordovaId": "org.cordova.quasar.app",
   "author": "Budi Setiawan <bud1.setia1@gmail.com>",
