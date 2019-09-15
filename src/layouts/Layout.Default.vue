@@ -124,15 +124,20 @@ export default {
           pathTo: '/claim-reward',
         },
         {
+          label: 'Withdraw',
+          icon: 'monetization_on',
+          pathTo: '/withdraw',
+        },
+        {
           label: 'Users',
           icon: 'person_pin',
           pathTo: '/users',
         },
-        {
-          label: 'Voucher',
-          icon: 'confirmation_number',
-          pathTo: '/voucher',
-        },
+        // {
+        //   label: 'Voucher',
+        //   icon: 'confirmation_number',
+        //   pathTo: '/voucher',
+        // },
       ],
     };
   },
