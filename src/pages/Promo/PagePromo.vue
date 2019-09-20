@@ -98,9 +98,9 @@ export default {
           align: 'left',
         },
         {
-          name: 'promo_type',
+          name: 'promo_type_name',
           label: 'Promo Type',
-          field: 'promo_type',
+          field: 'promo_type_name',
           sortable: true,
           align: 'left',
         },
@@ -154,7 +154,8 @@ export default {
         const promos = await promoService.get();
 
         if (promos) {
-          this.promos = promos;
+          const promoWithType = promos.map(item => Object.assign({}, item, { promo_type_name: parseInt(item.promo_type, 10) === 0 ? 'Pulsa' : 'Product' }));
+          this.promos = promoWithType;
         }
       } catch (e) {
         if (e.response.status >= 400) {
