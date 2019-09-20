@@ -56,7 +56,7 @@ export default {
       const modifiedData = res.map(item => Object.assign({}, item, {
         status_name:
           this.referenceStatus.find(status => status.value === parseInt(item.status, 10)).label,
-        uploaded_date: moment(item.updated_at, 'YYYY-MM-DD HH:mm:ss').format('DD MMM YYYY'),
+        uploaded_date: item.updated_at ? moment(item.updated_at, 'YYYY-MM-DD HH:mm:ss').format('DD MMM YYYY') : '-',
       }));
 
       this.claims = modifiedData;
@@ -106,6 +106,13 @@ export default {
           name: 'user_name',
           label: 'User',
           field: 'user_name',
+          sortable: true,
+          align: 'left',
+        },
+        {
+          name: 'user_phone',
+          label: 'User Phone',
+          field: 'user_phone',
           sortable: true,
           align: 'left',
         },
