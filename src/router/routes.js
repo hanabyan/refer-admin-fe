@@ -15,7 +15,7 @@ const routes = [
           { path: ':id?/product', component: () => import('pages/Promo/PagePromoProduct.vue') },
         ],
       },
-      { path: 'claim-reward', component: () => import('pages/Promo/PagePromoClaim') },
+      { path: 'claim-reward', component: () => import('pages/Claim/PagePromoClaim') },
       { path: 'users', component: () => import('pages/User/PageUsers.vue') },
       { path: 'voucher', component: () => import('pages/PageVoucher.vue') },
       { path: 'withdraw', component: () => import('pages/Withdraw/PageWithdraw.vue') },
