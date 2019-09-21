@@ -124,9 +124,9 @@ export default {
           pathTo: '/claim-reward',
         },
         {
-          label: 'Withdraw',
+          label: 'Withdrawal',
           icon: 'monetization_on',
-          pathTo: '/withdraw',
+          pathTo: '/withdrawal',
         },
         {
           label: 'Users',

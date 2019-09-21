@@ -1,5 +1,4 @@
 <template>
-<!-- TODO: ketika update image belum, muncul dimunculkan di list -->
   <div class="q-pa-md">
     <q-table
       :data="products"
