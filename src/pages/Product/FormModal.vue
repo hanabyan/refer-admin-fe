@@ -141,21 +141,31 @@
       <q-separator />
 
       <q-card-actions
-        align="right"
+        align="between"
         class="bg-white text-teal"
       >
         <q-btn
+          label="Delete"
+          icon="delete"
+          color="negative"
+          self="left"
           flat
-          label="Cancel"
-          @click="handleCancel"
-          :disable="isSubmitting"
+          @click="onDelete"
         />
-        <q-btn
-          flat
-          label="Save"
-          @click="handleSubmit"
-          :loading="isSubmitting"
-        />
+        <div>
+          <q-btn
+            flat
+            label="Cancel"
+            @click="handleCancel"
+            :disable="isSubmitting"
+          />
+          <q-btn
+            flat
+            label="Save"
+            @click="handleSubmit"
+            :loading="isSubmitting"
+          />
+        </div>
       </q-card-actions>
     </q-card>
   </q-dialog>
@@ -299,6 +309,43 @@ export default {
             this.$q.notify({ color: 'negative', message: errMsg, position: 'top-right' });
           }
         }
+      }
+    },
+    onDelete() {
+      this.$q.dialog({
+        title: 'Konfirmasi',
+        message: `Hapus produk ${this.form.name} ?`,
+        cancel: {
+          label: 'Batal',
+          flat: true,
+          color: 'teal',
+        },
+        ok: {
+          label: 'Ya',
+          flat: true,
+          color: 'teal',
+        },
+        persistent: true,
+      }).onOk(() => {
+        this.deleteProduct();
+      });
+    },
+    async deleteProduct() {
+      try {
+        const result = await productService.remove(this.form.id);
+        if (result) {
+          this.$emit('refetch');
+          this.toggleModal();
+          this.$q.notify({ color: 'positive', message: 'Hapus product berhasil', position: 'top-right' });
+        }
+      } catch (e) {
+        let errMsg = 'Gagal menghapus data';
+
+        if (typeof e === 'string') {
+          errMsg = e;
+        }
+
+        this.$q.notify({ color: 'negative', message: errMsg, position: 'top-right' });
       }
     },
     cropUploadSuccess(jsonData) {

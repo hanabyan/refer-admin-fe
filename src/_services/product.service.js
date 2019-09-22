@@ -18,8 +18,15 @@ function update(payload, id) {
     .catch(err => Promise.reject(err));
 }
 
+function remove(id) {
+  return axios.delete(`/product/${id}`)
+    .then(res => res.data)
+    .catch(err => Promise.reject(err));
+}
+
 export const productService = {
   get,
   create,
   update,
+  remove,
 };
