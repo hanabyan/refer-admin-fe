@@ -13,6 +13,7 @@ const routes = [
         children: [
           { path: '', component: () => import('pages/Promo/PagePromo.vue') },
           { path: ':id?/product', component: () => import('pages/Promo/PagePromoProduct.vue') },
+          { path: 'featured', component: () => import('pages/Promo/PagePromoFeatured.vue') },
         ],
       },
       { path: 'claim-reward', component: () => import('pages/Claim/PagePromoClaim') },

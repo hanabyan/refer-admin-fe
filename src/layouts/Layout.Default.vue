@@ -119,6 +119,11 @@ export default {
           pathTo: '/promo',
         },
         {
+          label: 'Featured',
+          icon: '',
+          pathTo: '/promo/featured',
+        },
+        {
           label: 'Claim Reward',
           icon: 'card_giftcard',
           pathTo: '/claim-reward',

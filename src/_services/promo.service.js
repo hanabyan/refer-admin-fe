@@ -30,10 +30,31 @@ function getPromoProduct(id) {
     .catch(err => Promise.reject(err));
 }
 
+function getPromoFeatured() {
+  return axios('/promo/featured')
+    .then(res => res.data)
+    .catch(err => Promise.reject(err));
+}
+
+function getPromoFeaturedNew(id) {
+  return axios('/promo/featured/new', { params: { id } })
+    .then(res => res.data)
+    .catch(err => Promise.reject(err));
+}
+
+function updateFeatured(payload) {
+  return axios.put('/promo/featured', payload)
+    .then(res => res.data)
+    .catch(err => Promise.reject(err));
+}
+
 export const promoService = {
   get,
   create,
   update,
   updatePromoProduct,
   getPromoProduct,
+  getPromoFeatured,
+  getPromoFeaturedNew,
+  updateFeatured,
 };
